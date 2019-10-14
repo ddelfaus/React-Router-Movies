@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, NavLink } from "react-router-dom";
+import MovieCard from './MovieCard';
+
 
 const Movie = (props) => {
   const [movie, setMovie] = useState({});
@@ -18,7 +21,7 @@ const Movie = (props) => {
           console.error(error);
         });
 
-  },[]);
+  },[props.match.params]);
   
   // Uncomment this only when you have moved on to the stretch goals
   // const saveMovie = () => {
@@ -26,13 +29,22 @@ const Movie = (props) => {
   //   addToSavedList(movie)
   // }
 
-  if (!movie) {
+  if (!movie)  
     return <div>Loading movie information...</div>;
-  }
+
 
   const { title, director, metascore, stars } = movie;
   return (
+    
+
+
+
+
+
     <div className="save-wrapper">
+         <MovieCard key={movie.id} movie={movie} />  
+      
+{/*       
       <div className="movie-card">
         <h2>{title}</h2>
         <div className="movie-director">
@@ -49,8 +61,9 @@ const Movie = (props) => {
           </div>
         ))}
       </div>
-      <div className="save-button">Save</div>
+      <div className="save-button">Save</div> */}
     </div>
+
   );
 }
 

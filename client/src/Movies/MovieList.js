@@ -9,7 +9,7 @@ const MovieList = props => {
       axios
         .get('http://localhost:5000/api/movies')
         .then(response => {
-          console.log(response)
+          console.log("hello ",response)
           setMovies(response.data);
           
         })

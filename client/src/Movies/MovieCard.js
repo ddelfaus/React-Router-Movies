@@ -4,7 +4,7 @@ const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
   console.log("eafafea", props)
   return(
-    <NavLink to ={`movies/${props.movie.id}`}>
+    <NavLink to ={`/movies/${props.movie.id}`}>
    
   
     <div className="movie-card">
@@ -17,14 +17,14 @@ const MovieCard = props => {
     </div>
     <h3>Actors</h3>
 
-    {stars.map(star => (
+    {stars && stars.map(star => (
       <div key={star} className="movie-star">
         {star}
       </div>
     ))}
   </div>
   </NavLink>
-  )
+  );
 };
 
 export default MovieCard;

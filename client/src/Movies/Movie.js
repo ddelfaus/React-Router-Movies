@@ -15,7 +15,9 @@ const Movie = (props) => {
        axios
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
+       
           setMovie(response.data);
+     
         })
         .catch(error => {
           console.error(error);
@@ -24,13 +26,13 @@ const Movie = (props) => {
   },[props.match.params]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+  const saveMovie = () => {
+    const addToSavedList = props.addToSavedList;
+    addToSavedList(movie)
+  }
 
   if (!movie)  {
-    return <div>Loading movie information...</div>;
+    return <div></div>;
   }
 
   // const { title, director, metascore, stars } = movie;
@@ -41,8 +43,10 @@ const Movie = (props) => {
       
       <MovieCard key={movie.id} movie={movie} />
   
-    
-      <div className="save-button">Save</div> 
+    <button onClick = {saveMovie} className = "save-button">
+      Save
+    </button>
+      
     </div>
 
   );
